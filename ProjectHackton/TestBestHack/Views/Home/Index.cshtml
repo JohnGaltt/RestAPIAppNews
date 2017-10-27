@@ -49,3 +49,12 @@
 }
 
 </table>
+
+<ul class="list-group">
+@foreach (var item in Model) {
+    <li class="list-group-item justify-content-between">
+    @Html.DisplayFor(modelItem => item.name)
+    <span class="badge badge-default badge-pill">@Html.DisplayFor(modelItem => item.country)</span>
+  </li>
+}
+</ul>
