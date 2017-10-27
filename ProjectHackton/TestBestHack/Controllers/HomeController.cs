@@ -13,22 +13,22 @@ namespace TestBestHack.Controllers
     public class HomeController : Controller
     {
 
-        public RootObject GetData(string category)
+        public async Task<RootObject> GetData(string category)
         {
             WebRequest request = WebRequest.Create(@"https://newsapi.org/v1/sources?category=" + category + "&language=en");
 
             request.Method = "GET";
             request.ContentType = "application/json";
 
-            WebResponse response = request.GetResponse();
+            WebResponse response = await request.GetResponseAsync();
 
-            string answer = String.Empty;
+            string answer;
 
             using (Stream stream = response.GetResponseStream())
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    answer = reader.ReadToEnd();
+                    answer = await reader.ReadToEndAsync();
                 }
             }
 

@@ -4,7 +4,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+$(()=>{
+$('th:odd').css('background-color','green');
+$('#changecolor').click(()=>{
+$('th:even').css('background-color','green');
+$('th:odd').css('background-color','white');
+});
+});
+</script>
 <h2 style="text-align:center">News List</h2>
 @Html.Partial("~/Views/Home/Select.cshtml",new TestBestHack.Models.Source())
 <br />
@@ -50,11 +59,3 @@
 
 </table>
 
-<ul class="list-group">
-@foreach (var item in Model) {
-    <li class="list-group-item justify-content-between">
-    @Html.DisplayFor(modelItem => item.name)
-    <span class="badge badge-default badge-pill">@Html.DisplayFor(modelItem => item.country)</span>
-  </li>
-}
-</ul>
